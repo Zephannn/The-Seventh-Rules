@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEVEN RULES – EXPERIMENT VERSION 24-B</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="glitch" data-text="SEVEN RULES">SEVEN RULES</div>
+    <p class="description">This is a human behavior experiment in a situation of extreme isolation.</p>
+    <p class="description">Subjects will be given 7 rules, without explanation, and monitored for 15 minutes…</p>
+    <p class="description">Surveillance is conducted by an AI based on psychological control.</p>
+    <p class="description highlight">Your response determines who survives.</p>
+  </div>
+
+  <audio id="bg-audio" autoplay loop>
+    <source src="Horror Ambiance.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // Untuk bypass blokir autoplay
+    window.addEventListener('click', () => {
+      const audio = document.getElementById('bg-audio');
+      if (audio) {
+        audio.play();
+      }
+    });
+  </script>
+</body>
+</html>
