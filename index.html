@@ -12,20 +12,29 @@
     <p class="description">This is a human behavior experiment in a situation of extreme isolation.</p>
     <p class="description">Subjects will be given 7 rules, without explanation, and monitored for 15 minutes…</p>
     <p class="description">Surveillance is conducted by an AI based on psychological control.</p>
-    <p class="description highlight">Your response determines who survives.</p>
+    <p class="description highlight">Your response determines who will survives.</p>
   </div>
 
-  <audio id="bg-audio" autoplay loop>
+  <!-- Audio -->
+  <audio id="bg-audio" loop playsinline>
     <source src="Horror Ambiance.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
   <script>
-    // Untuk bypass blokir autoplay
-    window.addEventListener('click', () => {
+    // Coba langsung play saat halaman dimuat (beberapa browser mengizinkan kalau mode autoplay diaktifkan)
+    window.addEventListener('DOMContentLoaded', () => {
       const audio = document.getElementById('bg-audio');
-      if (audio) {
-        audio.play();
+      const playPromise = audio.play();
+
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Kalau gagal, minta user klik layar
+          document.body.addEventListener('click', function clickHandler() {
+            audio.play();
+            document.body.removeEventListener('click', clickHandler);
+          });
+        });
       }
     });
   </script>
