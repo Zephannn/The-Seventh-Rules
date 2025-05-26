@@ -1,0 +1,75 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  text-align: center;
+}
+
+.container {
+  max-width: 800px;
+}
+
+.glitch {
+  font-size: 3rem;
+  position: relative;
+  color: white;
+  animation: glitch 1s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 red;
+  animation: glitchTop 1s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 blue;
+  animation: glitchBottom 1s infinite linear alternate-reverse;
+}
+
+@keyframes glitch {
+  0% { transform: none; }
+  20% { transform: skew(0.5deg); }
+  40% { transform: skew(-0.5deg); }
+  60% { transform: skew(1deg); }
+  80% { transform: skew(-1deg); }
+  100% { transform: none; }
+}
+
+@keyframes glitchTop {
+  0% { top: -2px; }
+  100% { top: -5px; }
+}
+
+@keyframes glitchBottom {
+  0% { top: 2px; }
+  100% { top: 5px; }
+}
+
+.description {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.highlight {
+  color: red;
+  font-weight: bold;
+  margin-top: 2rem;
+}
